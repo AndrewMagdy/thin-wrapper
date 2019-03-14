@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { CalendarComponent } from "./calendar.component";
+export { CalendarModule } from "./calendar.module";
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL3JlYWN0LWNvbXBvbmVudHMvIiwic291cmNlcyI6WyJzcmMvbGliL2NvbXBvbmVudHMvY2FsZW5kYXIvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsa0NBQWMsc0JBQXNCLENBQUM7QUFDckMsK0JBQWMsbUJBQW1CLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tIFwiLi9jYWxlbmRhci5jb21wb25lbnRcIjtcbmV4cG9ydCAqIGZyb20gXCIuL2NhbGVuZGFyLm1vZHVsZVwiO1xuIl19

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "name": "react-components",
+  "version": "0.0.1",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public-api.ts",
+      "umdModuleIds": {
+        "react": "React",
+        "react-dom": "ReactDOM",
+        "@angular-react/core": "ɵa",
+        "rc-calendar": "Calendar"
+      },
+      "comments": "none"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular-react/core": "^0.6.0",
+    "@angular/platform-browser-dynamic": "^6.0.0",
+    "@angular/platform-browser": "^6.0.0",
+    "react-dom": "^16.6.3",
+    "react": "^16.6.3",
+    "rc-calendar": "^9.10.10"
+  }
+}

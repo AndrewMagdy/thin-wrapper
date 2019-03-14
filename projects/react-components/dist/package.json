@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "name": "react-components",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular-react/core": "^0.6.0",
+    "@angular/platform-browser-dynamic": "^6.0.0",
+    "@angular/platform-browser": "^6.0.0",
+    "react-dom": "^16.6.3",
+    "react": "^16.6.3",
+    "rc-calendar": "^9.10.10"
+  },
+  "main": "bundles/react-components.umd.js",
+  "module": "fesm5/react-components.js",
+  "es2015": "fesm2015/react-components.js",
+  "esm5": "esm5/react-components.js",
+  "esm2015": "esm2015/react-components.js",
+  "fesm5": "fesm5/react-components.js",
+  "fesm2015": "fesm2015/react-components.js",
+  "typings": "react-components.d.ts",
+  "metadata": "react-components.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

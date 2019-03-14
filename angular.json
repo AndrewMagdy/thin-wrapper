@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "react-components": {
+      "root": "projects/react-components",
+      "sourceRoot": "projects/react-components/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/react-components/tsconfig.lib.json",
+            "project": "projects/react-components/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/react-components/src/test.ts",
+            "tsConfig": "projects/react-components/tsconfig.spec.json",
+            "karmaConfig": "projects/react-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/react-components/tsconfig.lib.json",
+              "projects/react-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "thin-wrapper"
