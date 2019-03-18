@@ -1,7 +1,7 @@
 import { __extends } from 'tslib';
 import { ReactWrapperComponent, registerElement } from '@angular-react/core';
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, Input, NgZone, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, Input, NgZone, Output, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import Calendar from 'rc-calendar';
 
 /**
@@ -11,10 +11,13 @@ import Calendar from 'rc-calendar';
 var CalendarComponent = /** @class */ (function (_super) {
     __extends(CalendarComponent, _super);
     function CalendarComponent(elementRef, changeDetectorRef, renderer, ngZone) {
-        return _super.call(this, elementRef, changeDetectorRef, renderer, {
+        var _this = _super.call(this, elementRef, changeDetectorRef, renderer, {
             ngZone: ngZone,
             setHostDisplay: true
         }) || this;
+        _this.onChange = new EventEmitter();
+        _this.onChangeHandler = _this.onChangeHandler.bind(_this);
+        return _this;
     }
     /**
      * @return {?}
@@ -37,11 +40,24 @@ var CalendarComponent = /** @class */ (function (_super) {
      * @return {?}
      */
     function () { };
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    CalendarComponent.prototype.onChangeHandler = /**
+     * @param {?} date
+     * @return {?}
+     */
+    function (date) {
+        this.onChange.emit({
+            date: date
+        });
+    };
     CalendarComponent.decorators = [
         { type: Component, args: [{
                     selector: "calendar-react",
                     exportAs: "calendarReact",
-                    template: "\n    <Calendar #reactNode [mode]=\"mode\" [showToday]=\"showToday\">\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </Calendar>\n  ",
+                    template: "\n    <Calendar\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      (onChange)=\"onChangeHandler($event)\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </Calendar>\n  ",
                     //styleUrls: ["./calendar.component.css"],
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["react-renderer"]
@@ -56,7 +72,8 @@ var CalendarComponent = /** @class */ (function (_super) {
     CalendarComponent.propDecorators = {
         reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
         mode: [{ type: Input }],
-        showToday: [{ type: Input }]
+        showToday: [{ type: Input }],
+        onChange: [{ type: Output }]
     };
     return CalendarComponent;
 }(ReactWrapperComponent));

@@ -1,6 +1,6 @@
 import { ReactWrapperComponent, registerElement } from '@angular-react/core';
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, Input, NgZone, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, Input, NgZone, Output, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import Calendar from 'rc-calendar';
 
 /**
@@ -19,6 +19,8 @@ class CalendarComponent extends ReactWrapperComponent {
             ngZone,
             setHostDisplay: true
         });
+        this.onChange = new EventEmitter();
+        this.onChangeHandler = this.onChangeHandler.bind(this);
     }
     /**
      * @return {?}
@@ -32,13 +34,27 @@ class CalendarComponent extends ReactWrapperComponent {
      * @return {?}
      */
     ngOnDestroy() { }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    onChangeHandler(date) {
+        this.onChange.emit({
+            date
+        });
+    }
 }
 CalendarComponent.decorators = [
     { type: Component, args: [{
                 selector: "calendar-react",
                 exportAs: "calendarReact",
                 template: `
-    <Calendar #reactNode [mode]="mode" [showToday]="showToday">
+    <Calendar
+      #reactNode
+      [mode]="mode"
+      [showToday]="showToday"
+      (onChange)="onChangeHandler($event)"
+    >
       <ReactContent><ng-content></ng-content></ReactContent>
     </Calendar>
   `,
@@ -56,7 +72,8 @@ CalendarComponent.ctorParameters = () => [
 CalendarComponent.propDecorators = {
     reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
     mode: [{ type: Input }],
-    showToday: [{ type: Input }]
+    showToday: [{ type: Input }],
+    onChange: [{ type: Output }]
 };
 
 /**

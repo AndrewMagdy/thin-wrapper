@@ -24,7 +24,12 @@ interface ICalendarProps {
   selector: "calendar-react",
   exportAs: "calendarReact",
   template: `
-    <Calendar #reactNode [mode]="mode" [showToday]="showToday">
+    <Calendar
+      #reactNode
+      [mode]="mode"
+      [showToday]="showToday"
+      (onChange)="onChangeHandler($event)"
+    >
       <ReactContent><ng-content></ng-content></ReactContent>
     </Calendar>
   `,
@@ -39,6 +44,8 @@ export class CalendarComponent extends ReactWrapperComponent<ICalendarProps>
   @Input() mode?: ICalendarProps["mode"];
   @Input() showToday?: ICalendarProps["showToday"];
 
+  @Output() readonly onChange = new EventEmitter<{ date: Date }>();
+
   ngOnInit() {}
   ngAfterContentInit() {}
   ngOnDestroy() {}
@@ -52,6 +59,13 @@ export class CalendarComponent extends ReactWrapperComponent<ICalendarProps>
     super(elementRef, changeDetectorRef, renderer, {
       ngZone,
       setHostDisplay: true
+    });
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+
+  onChangeHandler(date: Date) {
+    this.onChange.emit({
+      date
     });
   }
 }

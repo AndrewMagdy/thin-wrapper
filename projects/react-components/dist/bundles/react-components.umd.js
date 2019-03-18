@@ -42,10 +42,13 @@
     var CalendarComponent = /** @class */ (function (_super) {
         __extends(CalendarComponent, _super);
         function CalendarComponent(elementRef, changeDetectorRef, renderer, ngZone) {
-            return _super.call(this, elementRef, changeDetectorRef, renderer, {
+            var _this = _super.call(this, elementRef, changeDetectorRef, renderer, {
                 ngZone: ngZone,
                 setHostDisplay: true
             }) || this;
+            _this.onChange = new core$1.EventEmitter();
+            _this.onChangeHandler = _this.onChangeHandler.bind(_this);
+            return _this;
         }
         /**
          * @return {?}
@@ -68,11 +71,24 @@
          * @return {?}
          */
             function () { };
+        /**
+         * @param {?} date
+         * @return {?}
+         */
+        CalendarComponent.prototype.onChangeHandler = /**
+         * @param {?} date
+         * @return {?}
+         */
+            function (date) {
+                this.onChange.emit({
+                    date: date
+                });
+            };
         CalendarComponent.decorators = [
             { type: core$1.Component, args: [{
                         selector: "calendar-react",
                         exportAs: "calendarReact",
-                        template: "\n    <Calendar #reactNode [mode]=\"mode\" [showToday]=\"showToday\">\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </Calendar>\n  ",
+                        template: "\n    <Calendar\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      (onChange)=\"onChangeHandler($event)\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </Calendar>\n  ",
                         //styleUrls: ["./calendar.component.css"],
                         changeDetection: core$1.ChangeDetectionStrategy.OnPush,
                         styles: ["react-renderer"]
@@ -89,7 +105,8 @@
         CalendarComponent.propDecorators = {
             reactNodeRef: [{ type: core$1.ViewChild, args: ["reactNode",] }],
             mode: [{ type: core$1.Input }],
-            showToday: [{ type: core$1.Input }]
+            showToday: [{ type: core$1.Input }],
+            onChange: [{ type: core$1.Output }]
         };
         return CalendarComponent;
     }(core.ReactWrapperComponent));
