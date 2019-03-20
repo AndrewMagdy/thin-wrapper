@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
-    "rc-calendar": "^9.10.10",
+    "rc-app": "/Users/andrewmagdy/Documents/git/angReactPOC/react-app/dist/",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "rxjs": "~6.2.0",

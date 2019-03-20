@@ -1,7 +1,7 @@
 import { ReactWrapperComponent, registerElement } from '@angular-react/core';
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, Input, NgZone, Output, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import Calendar from 'rc-calendar';
+import App from 'rc-app';
 
 /**
  * @fileoverview added by tsickle
@@ -19,8 +19,8 @@ class CalendarComponent extends ReactWrapperComponent {
             ngZone,
             setHostDisplay: true
         });
-        this.onChange = new EventEmitter();
-        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onStateChange = new EventEmitter();
+        this.onStateChangeHandler = this.onStateChangeHandler.bind(this);
     }
     /**
      * @return {?}
@@ -35,13 +35,11 @@ class CalendarComponent extends ReactWrapperComponent {
      */
     ngOnDestroy() { }
     /**
-     * @param {?} date
+     * @param {?} event
      * @return {?}
      */
-    onChangeHandler(date) {
-        this.onChange.emit({
-            date
-        });
+    onStateChangeHandler(event) {
+        this.onStateChange.emit(event);
     }
 }
 CalendarComponent.decorators = [
@@ -49,14 +47,15 @@ CalendarComponent.decorators = [
                 selector: "calendar-react",
                 exportAs: "calendarReact",
                 template: `
-    <Calendar
+    <App
       #reactNode
       [mode]="mode"
       [showToday]="showToday"
-      (onChange)="onChangeHandler($event)"
+      [initialState]="initialState"
+      [stateChange]="onStateChangeHandler"
     >
       <ReactContent><ng-content></ng-content></ReactContent>
-    </Calendar>
+    </App>
   `,
                 //styleUrls: ["./calendar.component.css"],
                 changeDetection: ChangeDetectionStrategy.OnPush,
@@ -73,7 +72,8 @@ CalendarComponent.propDecorators = {
     reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
     mode: [{ type: Input }],
     showToday: [{ type: Input }],
-    onChange: [{ type: Output }]
+    initialState: [{ type: Input }],
+    onStateChange: [{ type: Output }]
 };
 
 /**
@@ -85,10 +85,10 @@ const components = [CalendarComponent];
 class CalendarModule {
     constructor() {
         // Add any React elements to the registry (used by the renderer).
-        registerElement("Calendar", (/**
+        registerElement("App", (/**
          * @return {?}
          */
-        () => Calendar));
+        () => App));
     }
 }
 CalendarModule.decorators = [

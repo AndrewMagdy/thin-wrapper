@@ -1,10 +1,10 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular-react/core'), require('@angular/common'), require('@angular/core'), require('rc-calendar')) :
-    typeof define === 'function' && define.amd ? define('react-components', ['exports', '@angular-react/core', '@angular/common', '@angular/core', 'rc-calendar'], factory) :
-    (factory((global['react-components'] = {}),global['ɵa'],global.ng.common,global.ng.core,global.Calendar));
-}(this, (function (exports,core,common,core$1,Calendar) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular-react/core'), require('@angular/common'), require('@angular/core'), require('rc-app')) :
+    typeof define === 'function' && define.amd ? define('react-components', ['exports', '@angular-react/core', '@angular/common', '@angular/core', 'rc-app'], factory) :
+    (factory((global['react-components'] = {}),global['ɵa'],global.ng.common,global.ng.core,global.App));
+}(this, (function (exports,core,common,core$1,App) { 'use strict';
 
-    Calendar = Calendar && Calendar.hasOwnProperty('default') ? Calendar['default'] : Calendar;
+    App = App && App.hasOwnProperty('default') ? App['default'] : App;
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -46,8 +46,8 @@
                 ngZone: ngZone,
                 setHostDisplay: true
             }) || this;
-            _this.onChange = new core$1.EventEmitter();
-            _this.onChangeHandler = _this.onChangeHandler.bind(_this);
+            _this.onStateChange = new core$1.EventEmitter();
+            _this.onStateChangeHandler = _this.onStateChangeHandler.bind(_this);
             return _this;
         }
         /**
@@ -72,23 +72,21 @@
          */
             function () { };
         /**
-         * @param {?} date
+         * @param {?} event
          * @return {?}
          */
-        CalendarComponent.prototype.onChangeHandler = /**
-         * @param {?} date
+        CalendarComponent.prototype.onStateChangeHandler = /**
+         * @param {?} event
          * @return {?}
          */
-            function (date) {
-                this.onChange.emit({
-                    date: date
-                });
+            function (event) {
+                this.onStateChange.emit(event);
             };
         CalendarComponent.decorators = [
             { type: core$1.Component, args: [{
                         selector: "calendar-react",
                         exportAs: "calendarReact",
-                        template: "\n    <Calendar\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      (onChange)=\"onChangeHandler($event)\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </Calendar>\n  ",
+                        template: "\n    <App\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      [initialState]=\"initialState\"\n      [stateChange]=\"onStateChangeHandler\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </App>\n  ",
                         //styleUrls: ["./calendar.component.css"],
                         changeDetection: core$1.ChangeDetectionStrategy.OnPush,
                         styles: ["react-renderer"]
@@ -106,7 +104,8 @@
             reactNodeRef: [{ type: core$1.ViewChild, args: ["reactNode",] }],
             mode: [{ type: core$1.Input }],
             showToday: [{ type: core$1.Input }],
-            onChange: [{ type: core$1.Output }]
+            initialState: [{ type: core$1.Input }],
+            onStateChange: [{ type: core$1.Output }]
         };
         return CalendarComponent;
     }(core.ReactWrapperComponent));
@@ -120,9 +119,9 @@
     var CalendarModule = /** @class */ (function () {
         function CalendarModule() {
             // Add any React elements to the registry (used by the renderer).
-            core.registerElement("Calendar", ( /**
+            core.registerElement("App", ( /**
              * @return {?}
-             */function () { return Calendar; }));
+             */function () { return App; }));
         }
         CalendarModule.decorators = [
             { type: core$1.NgModule, args: [{

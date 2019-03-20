@@ -18,20 +18,22 @@ import { ReactWrapperComponent } from "@angular-react/core";
 interface ICalendarProps {
   mode: "time" | "date" | "month" | "year" | "decade";
   showToday: boolean;
+  initialState: any;
 }
 
 @Component({
   selector: "calendar-react",
   exportAs: "calendarReact",
   template: `
-    <Calendar
+    <App
       #reactNode
       [mode]="mode"
       [showToday]="showToday"
-      (onChange)="onChangeHandler($event)"
+      [initialState]="initialState"
+      [stateChange]="onStateChangeHandler"
     >
       <ReactContent><ng-content></ng-content></ReactContent>
-    </Calendar>
+    </App>
   `,
   //styleUrls: ["./calendar.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -43,8 +45,9 @@ export class CalendarComponent extends ReactWrapperComponent<ICalendarProps>
 
   @Input() mode?: ICalendarProps["mode"];
   @Input() showToday?: ICalendarProps["showToday"];
+  @Input() initialState?: ICalendarProps["initialState"];
 
-  @Output() readonly onChange = new EventEmitter<{ date: Date }>();
+  @Output() onStateChange = new EventEmitter();
 
   ngOnInit() {}
   ngAfterContentInit() {}
@@ -60,12 +63,10 @@ export class CalendarComponent extends ReactWrapperComponent<ICalendarProps>
       ngZone,
       setHostDisplay: true
     });
-    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onStateChangeHandler = this.onStateChangeHandler.bind(this);
   }
 
-  onChangeHandler(date: Date) {
-    this.onChange.emit({
-      date
-    });
+  onStateChangeHandler(event) {
+    this.onStateChange.emit(event);
   }
 }

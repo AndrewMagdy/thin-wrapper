@@ -2,7 +2,7 @@ import { __extends } from 'tslib';
 import { ReactWrapperComponent, registerElement } from '@angular-react/core';
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, Input, NgZone, Output, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import Calendar from 'rc-calendar';
+import App from 'rc-app';
 
 /**
  * @fileoverview added by tsickle
@@ -15,8 +15,8 @@ var CalendarComponent = /** @class */ (function (_super) {
             ngZone: ngZone,
             setHostDisplay: true
         }) || this;
-        _this.onChange = new EventEmitter();
-        _this.onChangeHandler = _this.onChangeHandler.bind(_this);
+        _this.onStateChange = new EventEmitter();
+        _this.onStateChangeHandler = _this.onStateChangeHandler.bind(_this);
         return _this;
     }
     /**
@@ -41,23 +41,21 @@ var CalendarComponent = /** @class */ (function (_super) {
      */
     function () { };
     /**
-     * @param {?} date
+     * @param {?} event
      * @return {?}
      */
-    CalendarComponent.prototype.onChangeHandler = /**
-     * @param {?} date
+    CalendarComponent.prototype.onStateChangeHandler = /**
+     * @param {?} event
      * @return {?}
      */
-    function (date) {
-        this.onChange.emit({
-            date: date
-        });
+    function (event) {
+        this.onStateChange.emit(event);
     };
     CalendarComponent.decorators = [
         { type: Component, args: [{
                     selector: "calendar-react",
                     exportAs: "calendarReact",
-                    template: "\n    <Calendar\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      (onChange)=\"onChangeHandler($event)\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </Calendar>\n  ",
+                    template: "\n    <App\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      [initialState]=\"initialState\"\n      [stateChange]=\"onStateChangeHandler\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </App>\n  ",
                     //styleUrls: ["./calendar.component.css"],
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["react-renderer"]
@@ -73,7 +71,8 @@ var CalendarComponent = /** @class */ (function (_super) {
         reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
         mode: [{ type: Input }],
         showToday: [{ type: Input }],
-        onChange: [{ type: Output }]
+        initialState: [{ type: Input }],
+        onStateChange: [{ type: Output }]
     };
     return CalendarComponent;
 }(ReactWrapperComponent));
@@ -87,10 +86,10 @@ var components = [CalendarComponent];
 var CalendarModule = /** @class */ (function () {
     function CalendarModule() {
         // Add any React elements to the registry (used by the renderer).
-        registerElement("Calendar", (/**
+        registerElement("App", (/**
          * @return {?}
          */
-        function () { return Calendar; }));
+        function () { return App; }));
     }
     CalendarModule.decorators = [
         { type: NgModule, args: [{
