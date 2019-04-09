@@ -1,6 +1,6 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular-react/core'), require('@angular/common'), require('@angular/core'), require('rc-app')) :
-    typeof define === 'function' && define.amd ? define('react-components', ['exports', '@angular-react/core', '@angular/common', '@angular/core', 'rc-app'], factory) :
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular-react/core'), require('@angular/common'), require('@angular/core'), require('poc-react-app')) :
+    typeof define === 'function' && define.amd ? define('react-components', ['exports', '@angular-react/core', '@angular/common', '@angular/core', 'poc-react-app'], factory) :
     (factory((global['react-components'] = {}),global['ɵa'],global.ng.common,global.ng.core,global.App));
 }(this, (function (exports,core,common,core$1,App) { 'use strict';
 
@@ -39,9 +39,9 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    var CalendarComponent = /** @class */ (function (_super) {
-        __extends(CalendarComponent, _super);
-        function CalendarComponent(elementRef, changeDetectorRef, renderer, ngZone) {
+    var PocReactAppComponent = /** @class */ (function (_super) {
+        __extends(PocReactAppComponent, _super);
+        function PocReactAppComponent(elementRef, changeDetectorRef, renderer, ngZone) {
             var _this = _super.call(this, elementRef, changeDetectorRef, renderer, {
                 ngZone: ngZone,
                 setHostDisplay: true
@@ -53,21 +53,21 @@
         /**
          * @return {?}
          */
-        CalendarComponent.prototype.ngOnInit = /**
+        PocReactAppComponent.prototype.ngOnInit = /**
          * @return {?}
          */
             function () { };
         /**
          * @return {?}
          */
-        CalendarComponent.prototype.ngAfterContentInit = /**
+        PocReactAppComponent.prototype.ngAfterContentInit = /**
          * @return {?}
          */
             function () { };
         /**
          * @return {?}
          */
-        CalendarComponent.prototype.ngOnDestroy = /**
+        PocReactAppComponent.prototype.ngOnDestroy = /**
          * @return {?}
          */
             function () { };
@@ -75,24 +75,23 @@
          * @param {?} event
          * @return {?}
          */
-        CalendarComponent.prototype.onStateChangeHandler = /**
+        PocReactAppComponent.prototype.onStateChangeHandler = /**
          * @param {?} event
          * @return {?}
          */
             function (event) {
                 this.onStateChange.emit(event);
             };
-        CalendarComponent.decorators = [
+        PocReactAppComponent.decorators = [
             { type: core$1.Component, args: [{
-                        selector: "calendar-react",
-                        exportAs: "calendarReact",
-                        template: "\n    <App\n      #reactNode\n      [mode]=\"mode\"\n      [showToday]=\"showToday\"\n      [initialState]=\"initialState\"\n      [stateChange]=\"onStateChangeHandler\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </App>\n  ",
-                        //styleUrls: ["./calendar.component.css"],
+                        selector: "poc-app-react",
+                        exportAs: "pocAppReact",
+                        template: "\n    <App\n      #reactNode\n      [initialState]=\"initialState\"\n      [stateChange]=\"onStateChangeHandler\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </App>\n  ",
                         changeDetection: core$1.ChangeDetectionStrategy.OnPush,
                         styles: ["react-renderer"]
                     }] }
         ];
-        CalendarComponent.ctorParameters = function () {
+        PocReactAppComponent.ctorParameters = function () {
             return [
                 { type: core$1.ElementRef },
                 { type: core$1.ChangeDetectorRef },
@@ -100,14 +99,12 @@
                 { type: core$1.NgZone }
             ];
         };
-        CalendarComponent.propDecorators = {
+        PocReactAppComponent.propDecorators = {
             reactNodeRef: [{ type: core$1.ViewChild, args: ["reactNode",] }],
-            mode: [{ type: core$1.Input }],
-            showToday: [{ type: core$1.Input }],
             initialState: [{ type: core$1.Input }],
             onStateChange: [{ type: core$1.Output }]
         };
-        return CalendarComponent;
+        return PocReactAppComponent;
     }(core.ReactWrapperComponent));
 
     /**
@@ -115,15 +112,15 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /** @type {?} */
-    var components = [CalendarComponent];
-    var CalendarModule = /** @class */ (function () {
-        function CalendarModule() {
+    var components = [PocReactAppComponent];
+    var PocReactAppModule = /** @class */ (function () {
+        function PocReactAppModule() {
             // Add any React elements to the registry (used by the renderer).
             core.registerElement("App", ( /**
              * @return {?}
              */function () { return App; }));
         }
-        CalendarModule.decorators = [
+        PocReactAppModule.decorators = [
             { type: core$1.NgModule, args: [{
                         imports: [common.CommonModule],
                         declarations: components,
@@ -131,8 +128,8 @@
                         schemas: [core$1.NO_ERRORS_SCHEMA]
                     },] }
         ];
-        CalendarModule.ctorParameters = function () { return []; };
-        return CalendarModule;
+        PocReactAppModule.ctorParameters = function () { return []; };
+        return PocReactAppModule;
     }());
 
     /**
@@ -155,8 +152,8 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
 
-    exports.CalendarComponent = CalendarComponent;
-    exports.CalendarModule = CalendarModule;
+    exports.PocReactAppComponent = PocReactAppComponent;
+    exports.PocReactAppModule = PocReactAppModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -1,13 +1,13 @@
 import { ReactWrapperComponent, registerElement } from '@angular-react/core';
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectorRef, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, Input, NgZone, Output, Renderer2, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import App from 'rc-app';
+import App from 'poc-react-app';
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class CalendarComponent extends ReactWrapperComponent {
+class PocReactAppComponent extends ReactWrapperComponent {
     /**
      * @param {?} elementRef
      * @param {?} changeDetectorRef
@@ -42,36 +42,31 @@ class CalendarComponent extends ReactWrapperComponent {
         this.onStateChange.emit(event);
     }
 }
-CalendarComponent.decorators = [
+PocReactAppComponent.decorators = [
     { type: Component, args: [{
-                selector: "calendar-react",
-                exportAs: "calendarReact",
+                selector: "poc-app-react",
+                exportAs: "pocAppReact",
                 template: `
     <App
       #reactNode
-      [mode]="mode"
-      [showToday]="showToday"
       [initialState]="initialState"
       [stateChange]="onStateChangeHandler"
     >
       <ReactContent><ng-content></ng-content></ReactContent>
     </App>
   `,
-                //styleUrls: ["./calendar.component.css"],
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 styles: ["react-renderer"]
             }] }
 ];
-CalendarComponent.ctorParameters = () => [
+PocReactAppComponent.ctorParameters = () => [
     { type: ElementRef },
     { type: ChangeDetectorRef },
     { type: Renderer2 },
     { type: NgZone }
 ];
-CalendarComponent.propDecorators = {
+PocReactAppComponent.propDecorators = {
     reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
-    mode: [{ type: Input }],
-    showToday: [{ type: Input }],
     initialState: [{ type: Input }],
     onStateChange: [{ type: Output }]
 };
@@ -81,8 +76,8 @@ CalendarComponent.propDecorators = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
-const components = [CalendarComponent];
-class CalendarModule {
+const components = [PocReactAppComponent];
+class PocReactAppModule {
     constructor() {
         // Add any React elements to the registry (used by the renderer).
         registerElement("App", (/**
@@ -91,7 +86,7 @@ class CalendarModule {
         () => App));
     }
 }
-CalendarModule.decorators = [
+PocReactAppModule.decorators = [
     { type: NgModule, args: [{
                 imports: [CommonModule],
                 declarations: components,
@@ -99,7 +94,7 @@ CalendarModule.decorators = [
                 schemas: [NO_ERRORS_SCHEMA]
             },] }
 ];
-CalendarModule.ctorParameters = () => [];
+PocReactAppModule.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -121,6 +116,6 @@ CalendarModule.ctorParameters = () => [];
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CalendarComponent, CalendarModule };
+export { PocReactAppComponent, PocReactAppModule };
 
 //# sourceMappingURL=react-components.js.map
