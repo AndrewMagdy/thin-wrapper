@@ -49,7 +49,7 @@ PocReactAppComponent.decorators = [
                 template: `
     <App
       #reactNode
-      [initialState]="initialState"
+      [angularTestProp]="angularTestProp"
       [stateChange]="onStateChangeHandler"
     >
       <ReactContent><ng-content></ng-content></ReactContent>
@@ -67,7 +67,7 @@ PocReactAppComponent.ctorParameters = () => [
 ];
 PocReactAppComponent.propDecorators = {
     reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
-    initialState: [{ type: Input }],
+    angularTestProp: [{ type: Input }],
     onStateChange: [{ type: Output }]
 };
 

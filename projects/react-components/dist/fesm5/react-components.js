@@ -55,7 +55,7 @@ var PocReactAppComponent = /** @class */ (function (_super) {
         { type: Component, args: [{
                     selector: "poc-app-react",
                     exportAs: "pocAppReact",
-                    template: "\n    <App\n      #reactNode\n      [initialState]=\"initialState\"\n      [stateChange]=\"onStateChangeHandler\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </App>\n  ",
+                    template: "\n    <App\n      #reactNode\n      [angularTestProp]=\"angularTestProp\"\n      [stateChange]=\"onStateChangeHandler\"\n    >\n      <ReactContent><ng-content></ng-content></ReactContent>\n    </App>\n  ",
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["react-renderer"]
                 }] }
@@ -68,7 +68,7 @@ var PocReactAppComponent = /** @class */ (function (_super) {
     ]; };
     PocReactAppComponent.propDecorators = {
         reactNodeRef: [{ type: ViewChild, args: ["reactNode",] }],
-        initialState: [{ type: Input }],
+        angularTestProp: [{ type: Input }],
         onStateChange: [{ type: Output }]
     };
     return PocReactAppComponent;

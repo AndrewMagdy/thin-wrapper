@@ -18,7 +18,7 @@ import { ReactWrapperComponent } from "@angular-react/core";
 interface IPocReactAppComponent{
   mode: "time" | "date" | "month" | "year" | "decade";
   showToday: boolean;
-  initialState: any;
+  angularTestProp: any;
 }
 
 @Component({
@@ -27,7 +27,7 @@ interface IPocReactAppComponent{
   template: `
     <App
       #reactNode
-      [initialState]="initialState"
+      [angularTestProp]="angularTestProp"
       [stateChange]="onStateChangeHandler"
     >
       <ReactContent><ng-content></ng-content></ReactContent>
@@ -41,7 +41,7 @@ export class PocReactAppComponent extends ReactWrapperComponent<IPocReactAppComp
   implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild("reactNode") protected reactNodeRef: ElementRef;
 
-  @Input() initialState?: IPocReactAppComponent["initialState"];
+  @Input() angularTestProp?: IPocReactAppComponent["angularTestProp"];
 
   @Output() onStateChange = new EventEmitter();
 
