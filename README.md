@@ -1,4 +1,5 @@
-# React components inside an Angular host application POC
+# **Wrapper Project**:  _React components inside an Angular host application POC_
+
 
 ## General Notes
 
