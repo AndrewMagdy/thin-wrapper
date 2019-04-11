@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
-  "name": "react-components",
-  "version": "0.0.1",
+  "name": "poc-react-components",
+  "version": "0.1.2",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
@@ -10,17 +10,17 @@
     "@angular/platform-browser": "^6.0.0",
     "react-dom": "^16.6.3",
     "react": "^16.6.3",
-    "poc-react-app": "^0.1.2"
+    "poc-react-app": "^0.2.0"
   },
-  "main": "bundles/react-components.umd.js",
-  "module": "fesm5/react-components.js",
-  "es2015": "fesm2015/react-components.js",
-  "esm5": "esm5/react-components.js",
-  "esm2015": "esm2015/react-components.js",
-  "fesm5": "fesm5/react-components.js",
-  "fesm2015": "fesm2015/react-components.js",
-  "typings": "react-components.d.ts",
-  "metadata": "react-components.metadata.json",
+  "main": "bundles/poc-react-components.umd.js",
+  "module": "fesm5/poc-react-components.js",
+  "es2015": "fesm2015/poc-react-components.js",
+  "esm5": "esm5/poc-react-components.js",
+  "esm2015": "esm2015/poc-react-components.js",
+  "fesm5": "fesm5/poc-react-components.js",
+  "fesm2015": "fesm2015/poc-react-components.js",
+  "typings": "poc-react-components.d.ts",
+  "metadata": "poc-react-components.metadata.json",
   "sideEffects": false,
   "dependencies": {
     "tslib": "^1.9.0"

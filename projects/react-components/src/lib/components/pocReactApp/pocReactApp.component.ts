@@ -15,7 +15,7 @@ import {
 } from "@angular/core";
 import { ReactWrapperComponent } from "@angular-react/core";
 
-interface IPocReactAppComponent{
+interface IPocReactAppComponent {
   mode: "time" | "date" | "month" | "year" | "decade";
   showToday: boolean;
   angularTestProp: any;
@@ -29,6 +29,7 @@ interface IPocReactAppComponent{
       #reactNode
       [angularTestProp]="angularTestProp"
       [stateChange]="onStateChangeHandler"
+      [angularNavigateTo]="angularNavigateToHandler"
     >
       <ReactContent><ng-content></ng-content></ReactContent>
     </App>
@@ -36,14 +37,15 @@ interface IPocReactAppComponent{
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: ["react-renderer"]
 })
-
-export class PocReactAppComponent extends ReactWrapperComponent<IPocReactAppComponent>
+export class PocReactAppComponent
+  extends ReactWrapperComponent<IPocReactAppComponent>
   implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild("reactNode") protected reactNodeRef: ElementRef;
 
   @Input() angularTestProp?: IPocReactAppComponent["angularTestProp"];
 
   @Output() onStateChange = new EventEmitter();
+  @Output() angularNavigateTo = new EventEmitter();
 
   ngOnInit() {}
   ngAfterContentInit() {}
@@ -60,12 +62,14 @@ export class PocReactAppComponent extends ReactWrapperComponent<IPocReactAppComp
       setHostDisplay: true
     });
     this.onStateChangeHandler = this.onStateChangeHandler.bind(this);
+    this.angularNavigateToHandler = this.angularNavigateToHandler.bind(this);
   }
 
   onStateChangeHandler(event) {
     this.onStateChange.emit(event);
   }
 
-  
+  angularNavigateToHandler(event) {
+    this.angularNavigateTo.emit(event);
+  }
 }
-

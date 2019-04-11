@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
-  "name": "react-components",
-  "version": "0.0.1",
+  "name": "poc-react-components",
+  "version": "0.1.2",
   "ngPackage": {
     "lib": {
       "entryFile": "public-api.ts",
@@ -21,6 +21,6 @@
     "@angular/platform-browser": "^6.0.0",
     "react-dom": "^16.6.3",
     "react": "^16.6.3",
-    "poc-react-app": "^0.1.2"
+    "poc-react-app": "^0.2.0"
   }
 }
