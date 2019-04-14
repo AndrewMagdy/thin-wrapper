@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "name": "poc-react-components",
+  "version": "0.1.2",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public-api.ts",
+      "umdModuleIds": {
+        "react": "React",
+        "react-dom": "ReactDOM",
+        "@angular-react/core": "ɵa"
+      },
+      "comments": "none"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular-react/core": "^0.6.0",
+    "@angular/platform-browser-dynamic": "^6.0.0",
+    "@angular/platform-browser": "^6.0.0",
+    "react-dom": "^16.6.3",
+    "react": "^16.6.3",
+    "poc-react-app": "^0.2.0"
+  }
+}
